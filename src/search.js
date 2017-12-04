@@ -1,12 +1,14 @@
 import { token } from '../.env';
+import { API_URL } from '../config';
+import { toJson } from './utils';
 
 export const search = (query, type) =>
-  fetch(`https://api.spotify.com/v1/search?q=${query}&type=${type}`, {
+  fetch(`${API_URL}/search?q=${query}&type=${type}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then(response => response.json());
+    .then(toJson);
 
 export const searchArtist = query =>
   search(query, 'artist');
