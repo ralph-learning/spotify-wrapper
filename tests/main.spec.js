@@ -53,15 +53,18 @@ describe('Spotify Wrapper', () => {
     it('should receibe he correct url  fetch', () => {
       context('passing one type', () => {
         search('Incubus', 'artist');
-        expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Incubus&type=artist');
+        expect(fetchedStub).to.have.been
+          .calledWith('https://api.spotify.com/v1/search?q=Incubus&type=artist');
 
         search('Incubus', 'albums');
-        expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Incubus&type=albums');
+        expect(fetchedStub).to.have.been
+          .calledWith('https://api.spotify.com/v1/search?q=Incubus&type=albums');
       });
 
       context('pass more then one type', () => {
         search('Incubus', ['artist', 'albums']);
-        expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Incubus&type=artist,albums');
+        expect(fetchedStub).to.have.been
+          .calledWith('https://api.spotify.com/v1/search?q=Incubus&type=artist,albums');
       });
     });
 
@@ -81,10 +84,63 @@ describe('Spotify Wrapper', () => {
 
     it('should called fetch with the correct url', () => {
       searchArtist('Incubus');
-      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Incubus&type=artist');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Incubus&type=artist');
 
       searchArtist('Muse');
-      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Muse&type=artist');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Muse&type=artist');
+    });
+  });
+
+  describe('searchAlbums', () => {
+    it('should call feth function', () => {
+      searchAlbums('Incubus');
+      expect(fetchedStub).to.have.been.calledOnce;
+    });
+
+    it('should called fetch with the correct url', () => {
+      searchAlbums('Incubus');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Incubus&type=album');
+
+      searchAlbums('Muse');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Muse&type=album');
+    });
+  });
+
+  describe('searchTracks', () => {
+    it('should call feth function', () => {
+      searchTracks('Incubus');
+      expect(fetchedStub).to.have.been.calledOnce;
+    });
+
+    it('should called fetch with the correct url', () => {
+      searchTracks('Incubus');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Incubus&type=track');
+
+      searchTracks('Muse');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Muse&type=track');
+    });
+  });
+
+  describe('searchPlayList', () => {
+    it('should call feth function', () => {
+      searchPlayList('Incubus');
+      expect(fetchedStub).to.have.been.calledOnce;
+    });
+
+    it('should called fetch with the correct url', () => {
+      searchPlayList('Incubus');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Incubus&type=playlist');
+
+      searchPlayList('Muse');
+      expect(fetchedStub).to.have.been
+        .calledWith('https://api.spotify.com/v1/search?q=Muse&type=playlist');
     });
   });
 });
