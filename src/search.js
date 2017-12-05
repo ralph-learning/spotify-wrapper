@@ -1,13 +1,8 @@
-import { token } from '../.env';
-import { API_URL } from '../config';
+import { API_URL, HEADER } from './config';
 import { toJson } from './utils';
 
 export const search = (query, type) =>
-  fetch(`${API_URL}/search?q=${query}&type=${type}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
+  fetch(`${API_URL}/search?q=${query}&type=${type}`, HEADER)
     .then(toJson);
 
 export const searchArtist = query =>

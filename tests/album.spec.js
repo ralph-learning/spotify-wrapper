@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 import sinonStubPromise from 'sinon-stub-promise';
 
 import { getAlbum, getAlbums, getAlbumTracks } from '../src/album';
-import { API_URL } from '../config';
+import { API_URL } from '../src/config';
 
 global.fetch = require('node-fetch');
 
