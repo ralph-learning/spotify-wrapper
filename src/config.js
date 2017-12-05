@@ -5,4 +5,4 @@ export const HEADER = {
   headers: {
     Authorization: `Bearer ${TOKEN}`,
   },
-}
+};
