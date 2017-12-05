@@ -1,2 +1,2 @@
-export const token = '<your-spotify-token>';
-export const email = '<you-email>';
+const token = '<your-spotify-token>';
+export default token;
