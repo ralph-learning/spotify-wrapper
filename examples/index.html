@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spotify Wrapper</title>
+</head>
+<body>
+
+  <div id="list-albums"></div>
+
+  <script src="../dist/spotify-wrapper.umd.js"></script>
+  <script>
+    const albumsEl = document.getElementById('list-albums');
+    const spotify = new spotifyWrapper({
+      token: 'BQC59542Qdvc0nfl2pr2_VituHBajvsToJGlEtba0Is1EOE8p1s17hoVAPmZG9iBtm4vTL7PcfmRaKGXAmhTyg-3NOqfvk30XHUpKURKhypaXUSFuKWOoLWDEI5PzSm2crk8_8sibL0',
+    });
+
+    const album = spotify.search.albums('Bon Jovi');
+    let markup = [];
+    album
+      .then(response => response.json())
+      .then(dataJson => {
+        markup = dataJson.albums.items.map((item) =>
+          `<img src="${item.images[0].url}" alt="${item.name}">`
+        ).join("");
+
+        albumsEl.innerHTML = markup;
+      })
+      .catch(error => console.error(error));
+
+
+  </script>
+</body>
+</html>
