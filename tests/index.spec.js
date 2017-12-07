@@ -10,7 +10,7 @@ chai.use(sinonChai);
 
 global.fetc = require('node-fetch');
 
-describe.only('SpotifyWrapper library', () => {
+describe('SpotifyWrapper library', () => {
   it('should create  instance of SpotifyWrapper', () => {
     const spotify = new SpotifyWrapper({});
     expect(spotify).to.be.an.instanceOf(SpotifyWrapper);
